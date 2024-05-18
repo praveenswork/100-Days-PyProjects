@@ -1,4 +1,5 @@
 from tkinter import *
+from  winsound import *
 import math
 
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -12,6 +13,9 @@ SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 REPS =  0
 timmer = None
+
+def play():
+     lambda: PlaySound("sound_asset\pop_sound.mp3", SND_FILENAME)
 # ---------------------------- TIMER RESET ------------------------------- # 
 def reset ():
     screen.after_cancel(timmer)
@@ -83,7 +87,7 @@ canvas.grid(row=2, column=2)
 timer_lbl = Label(text="Timer", font=(FONT_NAME, 34, "bold"), bg=PINK, fg=GREEN)
 timer_lbl.grid(row=1, column=2)
 
-set_btn = Button(text='set',bg=GREEN, command=start )
+set_btn = Button(text='set',bg=GREEN, command=start,) 
 set_btn.grid(row=3, column=1)
 
 
