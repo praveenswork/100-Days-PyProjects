@@ -98,4 +98,6 @@ tick = Label( fg=GREEN, bg=PINK, font=(FONT_NAME,24,"bold"))
 tick.grid(row=3, column=2)
 tick.config(pady=20)
 
+
+
 screen.mainloop()

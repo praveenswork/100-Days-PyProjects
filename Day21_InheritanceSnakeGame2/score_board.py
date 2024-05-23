@@ -7,7 +7,7 @@ FONT = ('Courier', 20, 'normal')
 class Score(Turtle):
     def __init__(self):
         super().__init__()
-        self.score = 08520
+        self.score = 0
         self.hight_score = 0
         with open('data.txt') as data:
             self.hight_score = int(data.read())
