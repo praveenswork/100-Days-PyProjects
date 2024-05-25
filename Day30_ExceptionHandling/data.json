@@ -1,0 +1,10 @@
+{
+    "obj": {
+        "name": "praveen",
+        "age": 19
+    },
+    "greet": {
+        "name": "morning",
+        "age": 7
+    }
+}
