@@ -42,7 +42,7 @@ def is_night():
 
 while True:
     time.sleep(60)
-    if iss_overhead and is_night:
+    if iss_overhead() and is_night():
         with smtplib.SMTP("smtp.gmail.com") as server:
             server.starttls()
             server.login(user=my_email , password=password)
@@ -52,8 +52,7 @@ while True:
                 msg='Subject:Look Up \n\n ISS is above here...'
             )
 
-# Then send me an email to tell me to look up.
-# BONUS: run the code every 60 seconds.
+
 
 
 
