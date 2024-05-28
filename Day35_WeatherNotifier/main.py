@@ -1,3 +1,5 @@
+import os
+from twilio.http.http_client import TwilioHttpClient
 import requests
 from twilio.rest import *
 
@@ -17,19 +19,25 @@ response = requests.get("https://api.openweathermap.org/data/2.5/forecast", para
 response.raise_for_status()
 weather_data = response.json()
 data= weather_data["list"][0]["weather"][0]["id"]
-
-
+degree_data =  weather_data["list"][0]['main']['temp']
 
 for hour_data in weather_data["list"]:
-    condition_id = hour_data["weather"][0]["id"] 
+    condition_id = hour_data["weather"][0]["id"]
+    K_degree =  hour_data['main']['temp'] 
+    celsius = round(K_degree - 273.15,2)
     if int(condition_id) < 700 : 
         will_rain= True
+        #print(condition_id,celsius)
+msg =(f"Rain expected with Condition ID:{condition_id},Temperature: {celsius}°C")
 
 if will_rain:
-    client = Client(account_sid,account_token)
+    #proxy_client =TwilioHttpClient()
+    #proxy_client.session.proxies = {'http':os.environ['https_proxy']}
+
+    client = Client(account_sid,account_token)  #,http_client=proxy_client)
     message = client.messages \
         .create(
-            body = "its going to rain today",
+            body = msg,
             from_ = "+13614056564",
             to  = "+919500617928"
         )
