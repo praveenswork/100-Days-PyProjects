@@ -5,17 +5,19 @@ from twilio.rest import *
 
 MyLat = 11.016844
 MyLong = 76.955833
+endpoint  = "https://api.openweathermap.org/data/2.5/forecast"
+api_key = os.environ.get("OWM_API_KEY")
 account_sid = "AC87da0003fadd90cc691b5e1e13b03e6f"
-account_token ="a3eda824b781ad8a38f59ececf85a055"
+account_token = os.environ.get("OWM_AUTH_TOKEN")
 
 parameter = {
     "lat":MyLat,
     "lon":MyLong,
-    "appid":"8f02b4995f3db82f010d7b632922f712",
+    "appid":api_key,
     "cnt":5
 }
 
-response = requests.get("https://api.openweathermap.org/data/2.5/forecast", params = parameter)
+response = requests.get(endpoint, params = parameter)
 response.raise_for_status()
 weather_data = response.json()
 data= weather_data["list"][0]["weather"][0]["id"]
@@ -42,4 +44,4 @@ if will_rain:
             to  = "+919500617928"
         )
     print(message.status)
-   
+ 
