@@ -1,0 +1,5 @@
+trade_api_key = "115P7A70TIOLSHZ6"
+news_api_key = b4ce103013ec40cc8f597fec096f4e35
+TRADE_API = https://www.alphavantage.co/query
+NEWS_API = https://newsapi.org/v2/everything
+"function=TIME_SERIES_DAILY&symbol=TSLA&apikey=115P7A70TIOLSHZ6"
