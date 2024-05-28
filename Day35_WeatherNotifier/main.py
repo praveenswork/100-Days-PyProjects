@@ -5,6 +5,9 @@ from twilio.rest import *
 
 MyLat = 11.016844
 MyLong = 76.955833
+
+TWILIO_NUM = "+13614056564"
+MY_NUM = "+919500617928"
 endpoint  = "https://api.openweathermap.org/data/2.5/forecast"
 api_key = os.environ.get("OWM_API_KEY")
 account_sid = "AC87da0003fadd90cc691b5e1e13b03e6f"
@@ -40,8 +43,8 @@ if will_rain:
     message = client.messages \
         .create(
             body = msg,
-            from_ = "+13614056564",
-            to  = "+919500617928"
+            from_ = TWILIO_NUM,
+            to  = MY_NUM
         )
     print(message.status)
  
