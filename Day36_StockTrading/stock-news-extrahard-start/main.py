@@ -2,20 +2,18 @@ import os
 import requests
 from twilio.rest import Client
 
-TWILIO_NUMBER = "your twilio number"
-MY_NUMBER  = "your number"
 
+TWILIO_NUMBER = os.getenv("TWILIO_NUMBER")
+MY_NUMBER = os.getenv("MY_NUMBER")
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
-
-STOCK_ENDPOINT ="https://www.alphavantage.co/query"
+STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
+STOCK_API_KEY = os.getenv("STOCK_API_KEY")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+TWILIO_SID = os.getenv("TWILIO_SID")
+TWILIO_AUTH_KEY = os.getenv("TWILIO_AUTH_KEY")
 
-STOCK_API_KEY = "115P7A70TIOLSHZ6"
-NEWS_API_KEY = "b4ce103013ec40cc8f597fec096f4e35"
-
-TWILIO_SID = "AC87da0003fadd90cc691b5e1e13b03e6f"
-TWILIO_AUTH_KEY = "a3eda824b781ad8a38f59ececf85a055"
 
 stock_params = {
     "function":"TIME_SERIES_DAILY",
@@ -70,7 +68,7 @@ if diff_percent > 1:
     for article in formatted_articles:
         message = client.messages.create(
             body = article,
-            from_ = "+13614056564",
-            to = "+919500617928"
+            from_ = os.environ.get(TWILIO_NUMBER),
+            to = os.environ.get(MY_NUMBER)
         )
     print(message.status)
