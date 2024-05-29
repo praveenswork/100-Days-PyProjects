@@ -2,22 +2,26 @@ import os
 from twilio.http.http_client import TwilioHttpClient
 import requests
 from twilio.rest import *
+from dotenv import load_dotenv
+
+load_dotenv()
 
 MyLat = 11.016844
 MyLong = 76.955833
 
-TWILIO_NUM = "+13614056564"
-MY_NUM = "+919500617928"
+TWILIO_NUM = os.getenv("TWILIO_NUMBER")
+MY_NUM = os.getenv("MY_NUMBER")
 endpoint  = "https://api.openweathermap.org/data/2.5/forecast"
-api_key = os.environ.get("OWM_API_KEY")
-account_sid = "AC87da0003fadd90cc691b5e1e13b03e6f"
-account_token = os.environ.get("OWM_AUTH_TOKEN")
+api_key = os.environ.get("API_KEY")
+account_sid = os.getenv("TWILIO_SID")
+account_token = os.environ.get("TWILIO_AUTH_KEY")
 
 parameter = {
     "lat":MyLat,
     "lon":MyLong,
     "appid":api_key,
     "cnt":5
+
 }
 
 response = requests.get(endpoint, params = parameter)
