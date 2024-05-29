@@ -1,7 +1,10 @@
 import os
 import requests
 from twilio.rest import Client
+from dotenv import load_dotenv
 
+
+load_dotenv()
 
 TWILIO_NUMBER = os.getenv("TWILIO_NUMBER")
 MY_NUMBER = os.getenv("MY_NUMBER")
@@ -13,7 +16,6 @@ STOCK_API_KEY = os.getenv("STOCK_API_KEY")
 NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 TWILIO_SID = os.getenv("TWILIO_SID")
 TWILIO_AUTH_KEY = os.getenv("TWILIO_AUTH_KEY")
-
 
 stock_params = {
     "function":"TIME_SERIES_DAILY",
@@ -29,6 +31,7 @@ data = response.json()["Time Series (Daily)"]
 data_list =[ value for (key,value) in data.items()]
 yesterday_data  = data_list[0]
 yesterday_closing_price =yesterday_data["4. close"]
+
 
 day_before_yesterday_data  = data_list[1]
 day_before_yesterday_closing_price =day_before_yesterday_data["4. close"]
@@ -68,7 +71,7 @@ if diff_percent > 1:
     for article in formatted_articles:
         message = client.messages.create(
             body = article,
-            from_ = os.environ.get(TWILIO_NUMBER),
-            to = os.environ.get(MY_NUMBER)
+            from_ = TWILIO_NUMBER,
+            to = MY_NUMBER
         )
     print(message.status)
