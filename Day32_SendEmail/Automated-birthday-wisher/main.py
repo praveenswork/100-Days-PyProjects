@@ -1,11 +1,14 @@
+import os
 import smtplib
 import datetime as dt
 import random
 import pandas as pd
+from dotenv import load_dotenv
 
+load_dotenv()
 
-my_email ="praveenpraveen25720@gmail.com"
-password = "fhniaoitsgyperqm"
+my_email = os.environ.get("MY_EMAIL")
+my_password = os.environ.get("EMAIL_PASSWORD")
 
 birthday = dt.datetime.now()
 today = (birthday.month,birthday.day)
