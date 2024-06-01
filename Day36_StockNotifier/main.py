@@ -3,7 +3,6 @@ import requests
 from twilio.rest import Client
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 TWILIO_NUMBER = os.getenv("TWILIO_NUMBER")
