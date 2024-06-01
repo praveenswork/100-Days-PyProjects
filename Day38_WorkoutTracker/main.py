@@ -1,6 +1,9 @@
 import os
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
 sheety_url = "https://api.sheety.co/1c303ce0021e12124dcbf75095a932d6/workoutPythonCsv/sheet1"
