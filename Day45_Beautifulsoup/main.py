@@ -5,5 +5,15 @@ with open("website.html",encoding="utf-8") as html_file:
 
 soup = BeautifulSoup(content, "html.parser")
 
-print(soup)
+# print(soup)
+
+selector = soup.find_all("p")
+print(selector)
+
+selector_css = soup.select_one(selector="#name")
+print(selector_css)
+
+
+
+
 
