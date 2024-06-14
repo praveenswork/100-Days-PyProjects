@@ -14,7 +14,7 @@ for tag in tags:
     # movies_name.append(new_data)
     movies_name.append(new_data)
 
-for names in movies_name:
-    with open("new_data.txt","a") as file:
-        file.write(names)
+with open("new_data.txt", "w") as file:
+    for names in movies_name:
+        file.write(names + "\n")
     
